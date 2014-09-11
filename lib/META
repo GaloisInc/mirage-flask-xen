@@ -1,0 +1,5 @@
+version = "0.1"
+description = "XSM/Flask interface for Mirage on Xen"
+archive(native) = "mirage_flask_xen.cmxa"
+exists_if = "mirage_flask_xen.cmxa"
+
