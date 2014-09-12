@@ -18,7 +18,6 @@
 
 #include <stdint.h>
 #include <string.h>
-#include <unistd.h>
 
 #define __XEN_TOOLS__
 #include <xen/xen.h>
@@ -42,8 +41,6 @@ flask_context_to_sid(value context)
   flask_op.interface_version = XEN_FLASK_INTERFACE_VERSION;
   flask_op.u.sid_context.size = caml_string_length(context);
   set_xen_guest_handle(flask_op.u.sid_context.context, c_context);
-
-  write(0, "", 0);
 
   CAMLlocal1(result);
   result = caml_alloc(2, 0);    /* int * int32 */
