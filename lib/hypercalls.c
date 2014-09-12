@@ -56,21 +56,3 @@ flask_context_to_sid(value context)
 
   CAMLreturn(result);
 }
-
-#if 0
-int xsm_context_to_sid(char *context, uint32_t *sid_out)
-{
-  xen_flask_op_t flask_op;
-  int rc;
-
-  flask_op.cmd = FLASK_CONTEXT_TO_SID;
-  flask_op.interface_version = XEN_FLASK_INTERFACE_VERSION;
-  flask_op.u.sid_context.size = strlen(context);
-  set_xen_guest_handle(flask_op.u.sid_context.context, context);
-
-  if ((rc = HYPERVISOR_xsm_op(&flask_op)) == 0)
-    *sid_out = flask_op.u.sid_context.sid;
-
-  return rc;
-}
-#endif
